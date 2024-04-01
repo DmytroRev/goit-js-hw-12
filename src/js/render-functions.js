@@ -1,8 +1,8 @@
-import { refs } from "../main";
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import {gallery} from '../main.js'
 
 export const lightbox = new SimpleLightbox('.gallery a', {
     captionDelay: 250,
@@ -42,7 +42,7 @@ return arr.map(articleTemplate).join("")
 
 export function renderArticle(arr) {
     const marcup = articlesTemplate(arr)
-    refs.gallery.insertAdjacentHTML("beforeend", marcup)
+    gallery.insertAdjacentHTML("beforeend", marcup)
     lightbox.refresh();
 }
 

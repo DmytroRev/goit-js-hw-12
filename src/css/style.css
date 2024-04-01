@@ -1,6 +1,60 @@
 @import url(./reset.css);
 
 /* -----------------------loader----------------------- */
+.gallery-design {
+    max-width: 1440px;
+    padding: 36px 156px;
+}
+
+/* -----------------------form----------------------- */
+.form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 36px;
+}
+
+.input-search {
+    width: 272px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #808080;
+    padding-left: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+}
+
+.input-search:focus {
+    border: 1px solid #4E75FF;
+    outline: none;
+}
+
+.input-search::placeholder {
+    font-family: "Montserrat", sans-serif;
+    color: #808080;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+}
+
+/* -------------------------button------------------------- */
+.button-search {
+    width: 91px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #4E75FF;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+.button-search:hover {
+    background-color: #6C8CFF;
+}
+
+/* -------------------------loader------------------------- */
 .loader {
     width: 48px;
     height: 48px;
@@ -37,4 +91,51 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* -------------------------gallery------------------------- */
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 32px;
+    padding-left: 0;
+}
+
+.photos-list-item {
+    border: 1px solid #808080;
+    max-width: 360px;
+    height: 200px;
+}
+
+.photo {
+    width: 360px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.photo-information-container {
+    display: flex;
+    gap: 28px;
+    padding: 4px 20px;
+    justify-content: center;
+
+}
+
+.item-photo-information-container {
+    text-align: center;
+    color: #2E2F42;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 0.04em;
+}
+
+.accent {
+    font-weight: 600;
+    line-height: 1.33;
+    margin-top: 0;
+    margin-bottom: 0;
 }
