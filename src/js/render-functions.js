@@ -1,6 +1,14 @@
 import { refs } from "../main";
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
-import (refs)
+export const lightbox = new SimpleLightbox('.gallery a', {
+    captionDelay: 250,
+    captionsData: 'alt',
+})
+// import (refs)
 function articleTemplate(obj) {
     const {largeImageURL, webformatURL, tags, likes, views, comments, downloads} = obj;
 return `<li class="photos-list-item">
@@ -17,10 +25,32 @@ return `<li class="photos-list-item">
 }
 
 function articlesTemplate(arr) {
-  return arr.map(articleTemplate).join("")
+    if (arr.length === 0) {
+        iziToast.error({
+      message: 'Sorry, there are no images matching your search query. Please try again!',
+      theme: 'dark',
+      progressBarColor: '#FFFFFF',
+      color: '#EF4040',
+      position: 'topRight',
+    });
+    }
+return arr.map(articleTemplate).join("")
+    
+  
 }
 
 export function renderArticle(arr) {
     const marcup = articlesTemplate(arr)
     refs.gallery.insertAdjacentHTML("beforeend", marcup)
+    lightbox.refresh();
 }
+
+refs.loader.style.display = 'none';
+
+export const showLoader = () => {
+    loader.style.display = 'flex';
+    
+};
+const hideLoader = () => {
+    loader.style.display = 'none';
+};
