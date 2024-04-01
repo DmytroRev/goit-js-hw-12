@@ -1,10 +1,10 @@
 import axios from "axios";
-import { showLoader } from "./render-functions";
+// import { showLoader } from "./render-functions";
 
 const BASE_URL = "https://pixabay.com/api/";
 const API_KEY = '43014445-2d3e2fe82a6f953d204684055';
 
-export async function getUrl(query, page,) {
+export async function getUrl(query, page) {
     try {
         const res = await axios.get(BASE_URL, {
             params: {

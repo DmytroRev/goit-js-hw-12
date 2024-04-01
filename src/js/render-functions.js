@@ -8,7 +8,8 @@ export const lightbox = new SimpleLightbox('.gallery a', {
     captionDelay: 250,
     captionsData: 'alt',
 })
-// import (refs)
+
+
 function articleTemplate(obj) {
     const {largeImageURL, webformatURL, tags, likes, views, comments, downloads} = obj;
 return `<li class="photos-list-item">
@@ -45,12 +46,3 @@ export function renderArticle(arr) {
     lightbox.refresh();
 }
 
-refs.loader.style.display = 'none';
-
-export const showLoader = () => {
-    loader.style.display = 'flex';
-    
-};
-const hideLoader = () => {
-    loader.style.display = 'none';
-};
