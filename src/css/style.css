@@ -101,6 +101,7 @@
     flex-wrap: wrap;
     gap: 24px;
     margin-top: 32px;
+    margin-bottom: 0;
     padding-left: 0;
 }
 
@@ -138,4 +139,24 @@
     line-height: 1.33;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+/* -----------------------btn-footer----------------------- */
+.btn-footer-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-footer-form {
+    width: 125px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4E75FF;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-footer-form:hover {
+    background-color: #6C8CFF;
 }

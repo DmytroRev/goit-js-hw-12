@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { showLoader } from "./render-functions";
 
 const BASE_URL = "https://pixabay.com/api/";
 const API_KEY = '43014445-2d3e2fe82a6f953d204684055';
@@ -13,7 +12,7 @@ export async function getUrl(query, page) {
                 image_type: "photo",
                 orientation: "horizontal",
                 safesearch: true,
-                perPage: 15,
+                per_page: 15,
                 page,
             }
         })
