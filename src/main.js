@@ -22,10 +22,12 @@ export function hideLoader() {
 
 function showLoadMore() {
     btnLoadMore.classList.remove("is-hidden")
+    loader.classList.add("visually-hidden")
 }
 
 function hideLoadMore() {
     btnLoadMore.classList.add("is-hidden")
+    loader.classList.remove("visually-hidden")
 }
 
 
