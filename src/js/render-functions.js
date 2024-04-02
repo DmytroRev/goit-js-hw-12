@@ -26,18 +26,16 @@ return `<li class="photos-list-item">
 }
 
 function articlesTemplate(arr) {
-    if (arr.length === 0) {
-        iziToast.error({
-      message: 'Sorry, there are no images matching your search query. Please try again!',
-      theme: 'dark',
-      progressBarColor: '#FFFFFF',
-      color: '#EF4040',
-      position: 'topRight',
-    });
-    }
-return arr.map(articleTemplate).join("")
-    
-  
+    // if (arr.length === 0) {
+    //     iziToast.error({
+    //   message: 'Sorry, there are no images matching your search query. Please try again!',
+    //   theme: 'dark',
+    //   progressBarColor: '#FFFFFF',
+    //   color: '#EF4040',
+    //   position: 'topRight',
+    // });
+    // }
+return arr.map(articleTemplate).join("")  
 }
 
 export function renderArticle(arr) {

@@ -38,15 +38,13 @@ form.addEventListener("submit", handleSubmit);
 
 async function  handleSubmit(e) {
     e.preventDefault();
-
-    query = e.target.elements.query.value.trim();
-    // hideLoadMore();
-    
+    hideLoadMore();
+    showLoader();
     gallery.innerHTML = "";
-    perPage = 1
+     perPage = 1
+    query = e.target.elements.query.value.trim();
     
     if (!query) {
-        // hideLoader()
         iziToast.error({
           message: 'Please complete the field!',
         theme: 'dark',
@@ -55,20 +53,38 @@ async function  handleSubmit(e) {
             position: 'topRight',
         
         })
+        hideLoader()
         return
     }
 
     try {
-        showLoader()
         const data = await getUrl(query, perPage);
+        // showLoader()
         maxPage = Math.ceil(data.totalHits / perSize);
-        renderArticle(data.hits);
+        if (data.hits.length === 0) {
+             iziToast.error({
+        message: 'Sorry, there are no images matching your search query. Please try again!',
+        theme: 'dark',
+        progressBarColor: '#FFFFFF',
+        color: '#EF4040',
+        position: 'topRight',
+      });
+        } else {
+            renderArticle(data.hits);
+            checkLoadStatus();
+        }
     } catch (err) {
         console.log(err);
+            iziToast.error({
+      message: 'Sorry, an error occurred while loading. Please try again!',
+      theme: 'dark',
+      progressBarColor: '#FFFFFF',
+      color: '#EF4040',
+      position: 'topRight',
+    });
     }
    
     hideLoader();
-    checkLoadStatus();
     e.target.reset();
     
 }
@@ -77,20 +93,28 @@ btnLoadMore.addEventListener("click", handleLoadClick);
 
 async function handleLoadClick() {
     perPage += 1;
+    hideLoadMore()
     showLoader();
-    
+
     try {
         const data = await getUrl(query, perPage)
     renderArticle(data.hits)
     } catch (err) {
         console.log(err);
+            iziToast.error({
+      message: 'Sorry, an error occurred while loading. Please try again!',
+      theme: 'dark',
+      progressBarColor: '#FFFFFF',
+      color: '#EF4040',
+      position: 'topRight',
+    });
     } 
     myScroll();
     checkLoadStatus();
     hideLoader();
 }
 
-function checkLoadStatus() {
+ function checkLoadStatus() {
     if (perPage >= maxPage) {
         hideLoadMore()
         iziToast.error({
