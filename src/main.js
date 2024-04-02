@@ -38,14 +38,15 @@ form.addEventListener("submit", handleSubmit);
 
 async function  handleSubmit(e) {
     e.preventDefault();
-    hideLoadMore();
-    showLoader();
+
     query = e.target.elements.query.value.trim();
+    // hideLoadMore();
+    
     gallery.innerHTML = "";
     perPage = 1
     
     if (!query) {
-        hideLoader()
+        // hideLoader()
         iziToast.error({
           message: 'Please complete the field!',
         theme: 'dark',
@@ -66,8 +67,8 @@ async function  handleSubmit(e) {
         console.log(err);
     }
    
-    checkLoadStatus();
     hideLoader();
+    checkLoadStatus();
     e.target.reset();
     
 }
@@ -77,12 +78,13 @@ btnLoadMore.addEventListener("click", handleLoadClick);
 async function handleLoadClick() {
     perPage += 1;
     showLoader();
+    
     try {
         const data = await getUrl(query, perPage)
     renderArticle(data.hits)
     } catch (err) {
         console.log(err);
-    }
+    } 
     myScroll();
     checkLoadStatus();
     hideLoader();
